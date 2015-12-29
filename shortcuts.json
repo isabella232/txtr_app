@@ -1,0 +1,13 @@
+{
+  "shared": {
+    "tks": "thanks",
+    "ta": "thanks",
+    "zd": "Zendesk"
+  },
+  "3616907518": {
+    "cu": "custom"
+  }
+}
+
+For the `zat validate` to pass it needs to be in one line. 
+"{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"},\"3616907518\": {\"cu\": \"custom\"}}"
