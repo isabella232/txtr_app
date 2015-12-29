@@ -2,19 +2,23 @@
 
   return {
     events: {
+      'app.activated': 'appInit',
       'comment.text.changed':'checkText'
     },
 
-    checkText: _.debounce( function() {
-      shortcuts = JSON.parse(this.setting('shortcuts'));
+    appInit: function(){
+      this.shortcuts = JSON.parse(this.setting('shortcuts'));
+    },
 
-      shared = shortcuts['shared'];
-      user_shortcuts = shortcuts[this.currentUser().id()];
+    checkText: _.debounce( function() {
+      var shared = this.shortcuts['shared'];
+      var userShortcuts = this.shortcuts[this.currentUser().id()];
+
       //for each of the shared shortcuts. replace
       this.matchAndReplace(shared);
 
       //for each user specific, replace.
-      this.matchAndReplace(user_shortcuts);
+      this.matchAndReplace(userShortcuts);
 
     }, 200),
 
