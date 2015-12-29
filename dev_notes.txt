@@ -1,0 +1,5 @@
+### Temporary Dev Notes
+app will update the json in settings
+hidden settings to store the key value pair
+initial value = a few shortcuts
+We will keep the shortcuts.json as reference
