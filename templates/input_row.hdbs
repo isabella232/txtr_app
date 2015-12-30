@@ -1,0 +1,1 @@
+<input class="shortcut_input" type="text" placeholder="shortcut" required> <input class="replace_input" type="text" placeholder="replace with" required>

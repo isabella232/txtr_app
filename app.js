@@ -5,8 +5,11 @@
       'app.activated': 'appInit',
       'comment.text.changed':'checkText',
       'click .add_shortcut': 'openModal',
+      'click .list_shortcuts': 'openListModal',
       'click .save_button': 'saveShortcut',
-      'hidden #add_shortcut_modal': function(){ this.switchTo('home');}
+      'keypress .replace_input': 'enterKeyPressed',
+      'hidden .modal': function(){ this.switchTo('home');},
+      'click .delete_shortcut': 'deleteShortcut'
     },
 
     requests: {
@@ -23,8 +26,12 @@
     },
 
     saveShortcut: function(){
-      this.addUserShortcut(this.$('.shortcut_input:last').val(), this.$('.replace_input:last').val());
-      this.addInputRow();
+      var _shortcut = this.$('.shortcut_input:last').val().trim();
+      var _replacer = this.$('.replace_input:last').val().trim();
+      if( _shortcut !== "" && _replacer !== "" ){
+        this.addUserShortcut(_shortcut,_replacer);
+        this.addInputRow();
+      }
     },
 
     openModal: function(){
@@ -33,8 +40,21 @@
       this.addInputRow(); //Adds the first input row to the form.
     },
 
+    openListModal: function(){
+      this.switchTo('list_modal', { shortcuts: this.shortcuts[this.currentUser().id()] });
+      this.$('#list_modal').modal('toggle');
+    },
+
+    deleteShortcut: function(e){
+      var _key_for_deletion = this.$(e.target).data('key');
+      this.shortcuts[this.currentUser().id()] = _.omit(this.shortcuts[this.currentUser().id()], _key_for_deletion);
+      this.$(e.target).closest('tr').remove();
+      this.updateApp();
+    },
+
     appInit: function(){
       this.shortcuts = JSON.parse(this.setting('shortcuts'));
+      console.log(this.shortcuts[this.currentUser().id()]);
       this.switchTo('home');
     },
 
@@ -56,22 +76,23 @@
 
     addUserShortcut: function(shortcut, replace){
       this.shortcuts[this.currentUser().id()][shortcut] = replace;
+      this.updateApp();
+    },
+
+    updateApp: function(){
       this.ajax('updateAppInstallation', this.installationId(), JSON.stringify(this.shortcuts) );
     },
 
     addInputRow: function(){
-      this.$('#shortcut_form').append(this.getInputRow());
-      this.$('.replace_input').keypress(function(e){
-        if(e.which == 13){
-          this.saveShortcut();
-        }
-      }.bind(this));
+      this.$('#shortcut_form').append(this.renderTemplate('input_row'));
       //Requests focus to the last added row
       this.$('.shortcut_input:last').focus();
     },
 
-    getInputRow: function(){
-      return "<input class=\"shortcut_input\" type=\"text\" placeholder=\"shortcut\"> <input class=\"replace_input\" type=\"text\" placeholder=\"replace with\">";
+    enterKeyPressed: function(e){
+      if(e.which == 13){
+        this.saveShortcut();
+      }
     }
 
   };

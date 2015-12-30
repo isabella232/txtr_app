@@ -17,10 +17,7 @@ Please submit bug reports to [Insert Link](). Pull requests are welcome.
 
 #### Dev notes
 
-app will update the json in settings
-hidden settings to store the key value pair
-initial value = a few shortcuts
-We will keep the shortcuts.json as reference
+trim it so it does not save spaces
 
 The default JSON used in the manifest is shown below:
 `{
