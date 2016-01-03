@@ -17,7 +17,8 @@ Please submit bug reports to [Insert Link](). Pull requests are welcome.
 
 #### Dev notes
 
-trim it so it does not save spaces
+will be good to remember the text it already parsed so it doesn't do it again.
+This will make sense with the Enable/Disable button
 
 The default JSON used in the manifest is shown below:
 `{

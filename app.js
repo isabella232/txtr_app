@@ -8,8 +8,9 @@
       'click .list_shortcuts': 'openListModal',
       'click .save_button': 'saveShortcut',
       'keypress .replace_input': 'enterKeyPressed',
-      'hidden .modal': function(){ this.switchTo('home');},
-      'click .delete_shortcut': 'deleteShortcut'
+      'click .delete_shortcut': 'deleteShortcut',
+      'click #on_off_switch': 'toggleOnOff',
+      'hidden .modal': function(){ this.switchToHome();},
     },
 
     requests: {
@@ -54,11 +55,11 @@
 
     appInit: function(){
       this.shortcuts = JSON.parse(this.setting('shortcuts'));
-      console.log(this.shortcuts[this.currentUser().id()]);
-      this.switchTo('home');
+      this.switchToHome();
     },
 
     checkText: _.debounce( function() {
+      if( !this.appEnabled() ){ return null; }
       var shared = this.shortcuts['shared'];
       var userShortcuts = this.shortcuts[this.currentUser().id()];
       //for each of the shared shortcuts. replace
@@ -92,6 +93,35 @@
     enterKeyPressed: function(e){
       if(e.which == 13){
         this.saveShortcut();
+      }
+    },
+
+    toggleOnOff: function(){
+      if( this.appEnabled() ){
+        this.store('app_on', false);
+        this.$('#on_off_switch').removeClass('active').text('Disabled');
+      }
+      else{
+        this.store('app_on', true);
+        this.$('#on_off_switch').addClass('active').text('Enabled');
+      }
+    },
+
+    switchToHome: function(){
+      this.switchTo('home');
+      this.initializeOnOffButton();
+    },
+
+    appEnabled: function(){
+      return this.store('app_on') == true;
+    },
+
+    initializeOnOffButton: function(){
+      if( this.appEnabled() ){
+        this.$('#on_off_switch').text('Enabled');
+      }
+      else{
+        this.$('#on_off_switch').text('Disabled');
       }
     }
 
