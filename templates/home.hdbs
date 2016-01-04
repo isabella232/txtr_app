@@ -1,0 +1,4 @@
+<button type="button" class="btn btn-primary" id="on_off_switch">Initial</button>
+
+<a class="btn add_shortcut">Add Shortcut</a>
+<a class="btn list_shortcuts">Edit</a>
