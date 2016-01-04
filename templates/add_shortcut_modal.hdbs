@@ -1,14 +1,14 @@
 <div id="add_shortcut_modal" class="modal hide fade" tabindex="-1" role="dialog">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3 class="my_modal_label">Add Shortcuts</h3>
+    <h3 class="my_modal_label">{{t "label.add_shortcut"}}</h3>
   </div>
   <div class="modal-body">
     <form class="form-horizontal" id="shortcut_form">
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary save_button" aria-hidden="true">Add</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{{t "label.close"}}</button>
+    <button class="btn btn-primary save_button" aria-hidden="true">{{t "label.add"}}</button>
   </div>
 </div>

@@ -1,13 +1,13 @@
 <div id="list_modal" class="modal hide fade" tabindex="-1" role="dialog">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3 class="my_modal_label">Shortcuts</h3>
+    <h3 class="my_modal_label">{{t "label.shortcuts"}}</h3>
   </div>
   <div class="modal-body">
     <table class="table table-striped">
       <tr>
-        <th>Shortcut</th>
-        <th>Replace with</th>
+        <th>{{t "label.shortcut"}}</th>
+        <th>{{t "label.replace_with"}}</th>
         <th></th>
       </tr>
       {{#each shortcuts}}
@@ -20,6 +20,6 @@
     </table>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">{{t "label.close"}}</button>
   </div>
 </div>

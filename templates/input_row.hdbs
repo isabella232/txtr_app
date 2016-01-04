@@ -1,1 +1,1 @@
-<input class="shortcut_input" type="text" placeholder="shortcut" required> <input class="replace_input" type="text" placeholder="replace with" required>
+<input class="shortcut_input" type="text" placeholder="{{t "label.shortcut"}}" required> <input class="replace_input" type="text" placeholder="{{t "label.replace_with"}}" required>

@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" id="on_off_switch">Initial</button>
+<button type="button" class="btn btn-primary" id="on_off_switch"></button>
 
-<a class="btn add_shortcut">Add Shortcut</a>
-<a class="btn list_shortcuts">Edit</a>
+<a class="btn add_shortcut">{{t "label.add_shortcut"}}</a>
+<a class="btn list_shortcuts">{{t "label.edit"}}</a>

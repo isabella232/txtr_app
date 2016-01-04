@@ -100,11 +100,11 @@
     toggleOnOff: function(){
       if( this.appEnabled() ){
         this.store('app_on', false);
-        this.$('#on_off_switch').removeClass('active').text('Disabled');
+        this.$('#on_off_switch').removeClass('active').text(this.I18n.t('label.disabled'));
       }
       else{
         this.store('app_on', true);
-        this.$('#on_off_switch').addClass('active').text('Enabled');
+        this.$('#on_off_switch').addClass('active').text(this.I18n.t('label.enabled'));
       }
     },
 
@@ -118,7 +118,7 @@
     },
 
     initializeOnOffButton: function(){
-      var appState = this.appEnabled() ? 'Enabled' : 'Disabled';
+      var appState = this.appEnabled() ? this.I18n.t('label.enabled') : this.I18n.t('label.disabled');
       this.$('#on_off_switch').text(appState);
     }
 
