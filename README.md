@@ -15,10 +15,18 @@ Please submit bug reports to [Insert Link](). Pull requests are welcome.
 [put your screenshots down here.]
 
 
-#### Dev notes
+#### TO-DO List
 
 will be good to remember the text it already parsed so it doesn't do it again.
 This will make sense with the Enable/Disable button
+
+PRs expected:
+- remember/dont parse previous text(will fix bug found)
+- language support
+- Branding: add icons + readme file e.t.c
+- Refactoring, code review from the team
+
+
 
 The default JSON used in the manifest is shown below:
 `{

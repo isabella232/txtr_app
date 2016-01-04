@@ -14,9 +14,9 @@
     },
 
     requests: {
-      updateAppInstallation: function(installationId, shortcutString){
+      updateAppInstallation: function(shortcutString){
         return {
-          url: '/api/v2/apps/installations/'+ installationId +'.json',
+          url: '/api/v2/apps/installations/'+ this.installationId() +'.json',
           type: 'PUT',
           dataType: 'json',
           data: {
@@ -27,10 +27,10 @@
     },
 
     saveShortcut: function(){
-      var _shortcut = this.$('.shortcut_input:last').val().trim();
-      var _replacer = this.$('.replace_input:last').val().trim();
-      if( _shortcut !== "" && _replacer !== "" ){
-        this.addUserShortcut(_shortcut,_replacer);
+      var shortcut = this.$('.shortcut_input:last').val().trim();
+      var replacer = this.$('.replace_input:last').val().trim();
+      if( shortcut !== "" && replacer !== "" ){
+        this.addUserShortcut(shortcut,replacer);
         this.addInputRow();
       }
     },
@@ -47,8 +47,8 @@
     },
 
     deleteShortcut: function(e){
-      var _key_for_deletion = this.$(e.target).data('key');
-      this.shortcuts[this.currentUser().id()] = _.omit(this.shortcuts[this.currentUser().id()], _key_for_deletion);
+      var key_for_deletion = this.$(e.target).data('key');
+      this.shortcuts[this.currentUser().id()] = _.omit(this.shortcuts[this.currentUser().id()], key_for_deletion);
       this.$(e.target).closest('tr').remove();
       this.updateApp();
     },
@@ -59,7 +59,7 @@
     },
 
     checkText: _.debounce( function() {
-      if( !this.appEnabled() ){ return null; }
+      if( !this.appEnabled() ){ return; }
       var shared = this.shortcuts['shared'];
       var userShortcuts = this.shortcuts[this.currentUser().id()];
       //for each of the shared shortcuts. replace
@@ -91,7 +91,8 @@
     },
 
     enterKeyPressed: function(e){
-      if(e.which == 13){
+      var ENTER_KEYCODE = 13;
+      if(e.which == ENTER_KEYCODE){
         this.saveShortcut();
       }
     },
@@ -117,12 +118,8 @@
     },
 
     initializeOnOffButton: function(){
-      if( this.appEnabled() ){
-        this.$('#on_off_switch').text('Enabled');
-      }
-      else{
-        this.$('#on_off_switch').text('Disabled');
-      }
+      var appState = this.appEnabled() ? 'Enabled' : 'Disabled';
+      this.$('#on_off_switch').text(appState);
     }
 
   };
