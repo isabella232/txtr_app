@@ -1,54 +1,24 @@
 {
   "app": {
-    "package": "app_name",
+    "package": "txtr",
     "description": {
-      "value": "Play the famous zen tunes in your help desk.",
-      "title": "app description"
+      "value": "Add shortcuts to make your typing faster",
+      "title": "Txtr lets you customize keyboard shortcuts that make your typing faster"
     },
     "name": {
-      "value": "Buddha Machine",
-      "title": "app name"
+      "value": "Textr App",
+      "title": "txtr"
     }
   },
-
-  "loading": {
-    "value": "Welcome to this Sample App",
-    "title": "loading placeholder"
-  },
-
-  "fetch": {
-    "done": {
-      "value": "Good",
-      "title": "fetch success"
-    },
-    "fail": {
-      "value": "failed to fetch information from the server",
-      "title": "fetch failure"
-    }
-  },
-
-  "id": {
-    "value": "ID",
-    "title": "user id"
-  },
-
-  "email": {
-    "value": "Email",
-    "title": "user email"
-  },
-
-  "name": {
-    "value": "Name",
-    "title": "user name"
-  },
-
-  "role": {
-    "value": "Role",
-    "title": "user role"
-  },
-
-  "groups": {
-    "value": "Groups",
-    "title": "user groups"
+  "label": {
+    "close": "Close",
+    "add": "Add",
+    "add_shortcut": "Add Shortcut",
+    "edit": "Edit",
+    "shortcuts": "Shortcuts",
+    "shortcut": "Shortcut",
+    "replace_with": "Replace with",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
   }
 }

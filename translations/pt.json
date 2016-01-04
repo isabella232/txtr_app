@@ -1,0 +1,24 @@
+{
+  "app": {
+    "package": "txtr",
+    "description": {
+      "value": "Adicione atalhos que fazem voce digitar mais rapido",
+      "title": "Txtr te deixa adicionar atalhos para uma rapidida digitacao"
+    },
+    "name": {
+      "value": "Textr App",
+      "title": "txtr"
+    }
+  },
+  "label": {
+    "close": "Fechar",
+    "add": "Adicionar",
+    "add_shortcut": "Adicionar Atalho",
+    "edit": "Editar",
+    "shortcuts": "Atalhos",
+    "shortcut": "Atalho",
+    "replace_with": "Substituir com",
+    "enabled": "Ativo",
+    "disabled": "Desligado"
+  }
+}
