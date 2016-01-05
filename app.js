@@ -53,12 +53,12 @@
       this.matchAndReplace(shared);
       //for each user specific, replace.
       this.matchAndReplace(this.userShortcuts);
-    }, 200),
+    }, 400),
 
     matchAndReplace: function(shortcuts){
       for(var elementKey in shortcuts ){
-        var regex = new RegExp("\\s" + elementKey + "\\s", "g");
-        this.comment().text( this.comment().text().replace(regex, " " + shortcuts[elementKey] + " ") );
+        var regex = new RegExp("(\\W*)" + elementKey + "(\\W*)", "g");
+        this.comment().text( this.comment().text().replace(regex, "$1" + shortcuts[elementKey] + "$2") );
       }
     },
 

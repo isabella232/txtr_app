@@ -1,23 +1,12 @@
 # Textr
 
 Textr will provide a list of shortcuts to make your typing even faster.
-Create a custom list of the most common typed words to get started.
-
-### The following information is displayed:
-
-* info1
-* info2
-* info3
-
-Please submit bug reports to [Insert Link](). Pull requests are welcome.
-
-### Screenshot(s):
-[put your screenshots down here.]
-
+It's a simple find and replace app.
 
 #### TO-DO List
 PRs expected:
-- Branding: add icons + readme file e.t.c
+* 
+* User interface to allow admin users to customize shared shortcuts
 
 The default JSON used in the manifest is shown below:
 `{
@@ -25,11 +14,5 @@ The default JSON used in the manifest is shown below:
     "tks": "thanks",
     "ta": "thanks",
     "zd": "Zendesk"
-  },
-  "3616907518": {
-    "cu": "custom"
   }
 }`
-
-For the `zat validate` to pass it needs to be in one line.
-"{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"},\"3616907518\": {\"cu\": \"custom\"}}"
