@@ -6,7 +6,7 @@
     "url": "http://zendesk.com"
   },
   "defaultLocale": "en",
-  "private": true,
+  "private": false,
   "location": "ticket_sidebar",
   "version": "1.0",
   "frameworkVersion": "1.0",
@@ -16,7 +16,7 @@
       "type": "text",
       "required": true,
       "secure": false,
-      "default": "{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"},\"3616907518\": {\"cu\": \"custom\"}}"
+      "default": "{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"}}"
     }
   ]
 }

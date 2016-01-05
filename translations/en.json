@@ -1,6 +1,5 @@
 {
   "app": {
-    "package": "txtr",
     "description": {
       "value": "Add shortcuts to make your typing faster",
       "title": "Txtr lets you customize keyboard shortcuts that make your typing faster"

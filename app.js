@@ -13,19 +13,6 @@
       'hidden .modal': function(){ this.switchToHome();},
     },
 
-    requests: {
-      updateAppInstallation: function(shortcutString){
-        return {
-          url: '/api/v2/apps/installations/'+ this.installationId() +'.json',
-          type: 'PUT',
-          dataType: 'json',
-          data: {
-            'settings': { "shortcuts" : shortcutString }
-          }
-        };
-      }
-    },
-
     saveShortcut: function(){
       var shortcut = this.$('.shortcut_input:last').val().trim();
       var replacer = this.$('.replace_input:last').val().trim();
@@ -42,46 +29,46 @@
     },
 
     openListModal: function(){
-      this.switchTo('list_modal', { shortcuts: this.shortcuts[this.currentUser().id()] });
+      this.switchTo('list_modal', { shortcuts: this.userShortcuts });
       this.$('#list_modal').modal('toggle');
     },
 
     deleteShortcut: function(e){
-      var key_for_deletion = this.$(e.target).data('key');
-      this.shortcuts[this.currentUser().id()] = _.omit(this.shortcuts[this.currentUser().id()], key_for_deletion);
+      var keyForDeletion = this.$(e.target).data('key');
+      this.userShortcuts = _.omit(this.userShortcuts, keyForDeletion);
       this.$(e.target).closest('tr').remove();
       this.updateApp();
     },
 
     appInit: function(){
       this.shortcuts = JSON.parse(this.setting('shortcuts'));
+      this.userShortcuts = this.fetchUserShortcuts();
       this.switchToHome();
     },
 
     checkText: _.debounce( function() {
       if( !this.appEnabled() ){ return; }
       var shared = this.shortcuts['shared'];
-      var userShortcuts = this.shortcuts[this.currentUser().id()];
       //for each of the shared shortcuts. replace
       this.matchAndReplace(shared);
       //for each user specific, replace.
-      this.matchAndReplace(userShortcuts);
-    }, 200),
+      this.matchAndReplace(this.userShortcuts);
+    }, 400),
 
     matchAndReplace: function(shortcuts){
-      for(var element_key in shortcuts ){
-        var regex = new RegExp("\\s" + element_key + "\\s", "g");
-        this.comment().text( this.comment().text().replace(regex, " " + shortcuts[element_key] + " ") );
+      for(var elementKey in shortcuts ){
+        var regex = new RegExp("(\\W*)" + elementKey + "(\\W*)", "g");
+        this.comment().text( this.comment().text().replace(regex, "$1" + shortcuts[elementKey] + "$2") );
       }
     },
 
     addUserShortcut: function(shortcut, replace){
-      this.shortcuts[this.currentUser().id()][shortcut] = replace;
+      this.userShortcuts[shortcut] = replace;
       this.updateApp();
     },
 
     updateApp: function(){
-      this.ajax('updateAppInstallation', this.installationId(), JSON.stringify(this.shortcuts) );
+      this.store('txtr_app_user_shortcuts', this.userShortcuts);
     },
 
     addInputRow: function(){
@@ -114,12 +101,16 @@
     },
 
     appEnabled: function(){
-      return this.store('app_on') == true;
+      return this.store('app_on') === true;
     },
 
     initializeOnOffButton: function(){
       var appState = this.appEnabled() ? this.I18n.t('label.enabled') : this.I18n.t('label.disabled');
       this.$('#on_off_switch').text(appState);
+    },
+
+    fetchUserShortcuts: function(){
+      return this.store('txtr_app_user_shortcuts') || {};
     }
 
   };
