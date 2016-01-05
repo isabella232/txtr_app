@@ -1,7 +1,6 @@
 {
   "app": {
-    "package": "txtr",
-    "description": {
+      "description": {
       "value": "Adicione atalhos que fazem voce digitar mais rapido",
       "title": "Txtr te deixa adicionar atalhos para uma rapidida digitacao"
     },

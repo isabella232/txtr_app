@@ -101,7 +101,7 @@
     },
 
     appEnabled: function(){
-      return this.store('app_on') == true;
+      return this.store('app_on') === true;
     },
 
     initializeOnOffButton: function(){
