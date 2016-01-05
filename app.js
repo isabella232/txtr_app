@@ -57,7 +57,7 @@
 
     matchAndReplace: function(shortcuts){
       for(var elementKey in shortcuts ){
-        var regex = new RegExp("\\s" + element_key + "\\s", "g");
+        var regex = new RegExp("\\s" + elementKey + "\\s", "g");
         this.comment().text( this.comment().text().replace(regex, " " + shortcuts[elementKey] + " ") );
       }
     },
