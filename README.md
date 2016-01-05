@@ -17,11 +17,7 @@ Please submit bug reports to [Insert Link](). Pull requests are welcome.
 
 #### TO-DO List
 PRs expected:
-- remember/dont parse previous text(will fix bug found)
-- language support
 - Branding: add icons + readme file e.t.c
-- Refactoring, code review from the team
-- separate shared and per user shortcuts. per user --> localStorage
 
 The default JSON used in the manifest is shown below:
 `{

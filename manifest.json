@@ -16,7 +16,7 @@
       "type": "text",
       "required": true,
       "secure": false,
-      "default": "{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"},\"3616907518\": {\"cu\": \"custom\"}}"
+      "default": "{\"shared\": {\"tks\": \"thanks\",\"ta\": \"thanks\",\"zd\": \"Zendesk\"}}"
     }
   ]
 }
