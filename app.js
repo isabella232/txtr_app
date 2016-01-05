@@ -111,9 +111,7 @@
     },
 
     fetchUserShortcuts: function(){
-      var user_shortcuts = this.store('txtr_app_user_shortcuts');
-      user_shortcuts = (user_shortcuts == null ? JSON.parse("{}") : user_shortcuts);
-      return user_shortcuts;
+      return this.store('txtr_app_user_shortcuts') || {}; 
     }
 
   };
