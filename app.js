@@ -29,31 +29,30 @@
     },
 
     openListModal: function(){
-      this.switchTo('list_modal', { shortcuts: this.user_shortcuts });
+      this.switchTo('list_modal', { shortcuts: this.userShortcuts });
       this.$('#list_modal').modal('toggle');
     },
 
     deleteShortcut: function(e){
       var key_for_deletion = this.$(e.target).data('key');
-      this.user_shortcuts = _.omit(this.user_shortcuts, key_for_deletion);
+      this.userShortcuts = _.omit(this.userShortcuts, key_for_deletion);
       this.$(e.target).closest('tr').remove();
       this.updateApp();
     },
 
     appInit: function(){
       this.shortcuts = JSON.parse(this.setting('shortcuts'));
-      this.user_shortcuts = this.fetchUserShortcuts();
+      this.userShortcuts = this.fetchUserShortcuts();
       this.switchToHome();
     },
 
     checkText: _.debounce( function() {
       if( !this.appEnabled() ){ return; }
       var shared = this.shortcuts['shared'];
-      var userShortcuts = this.user_shortcuts;
       //for each of the shared shortcuts. replace
       this.matchAndReplace(shared);
       //for each user specific, replace.
-      this.matchAndReplace(userShortcuts);
+      this.matchAndReplace(this.userShortcuts);
     }, 200),
 
     matchAndReplace: function(shortcuts){
@@ -64,12 +63,12 @@
     },
 
     addUserShortcut: function(shortcut, replace){
-      this.user_shortcuts[shortcut] = replace;
+      this.userShortcuts[shortcut] = replace;
       this.updateApp();
     },
 
     updateApp: function(){
-      this.store('txtr_app_user_shortcuts', this.user_shortcuts);
+      this.store('txtr_app_user_shortcuts', this.userShortcuts);
     },
 
     addInputRow: function(){
@@ -111,7 +110,7 @@
     },
 
     fetchUserShortcuts: function(){
-      return this.store('txtr_app_user_shortcuts') || {}; 
+      return this.store('txtr_app_user_shortcuts') || {};
     }
 
   };
