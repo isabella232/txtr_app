@@ -34,8 +34,8 @@
     },
 
     deleteShortcut: function(e){
-      var key_for_deletion = this.$(e.target).data('key');
-      this.userShortcuts = _.omit(this.userShortcuts, key_for_deletion);
+      var keyForDeletion = this.$(e.target).data('key');
+      this.userShortcuts = _.omit(this.userShortcuts, keyForDeletion);
       this.$(e.target).closest('tr').remove();
       this.updateApp();
     },
@@ -56,9 +56,9 @@
     }, 200),
 
     matchAndReplace: function(shortcuts){
-      for(var element_key in shortcuts ){
+      for(var elementKey in shortcuts ){
         var regex = new RegExp("\\s" + element_key + "\\s", "g");
-        this.comment().text( this.comment().text().replace(regex, " " + shortcuts[element_key] + " ") );
+        this.comment().text( this.comment().text().replace(regex, " " + shortcuts[elementKey] + " ") );
       }
     },
 
